@@ -30,10 +30,19 @@ class AdminPostsController extends Controller
         return redirect()->route('admin.posts.index');
     }
 
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $data = ['id' => $id];
+        $data = [
+            'post' => $post,
+        ];
 
         return view('admin.posts.edit', $data);
+    }
+
+    public function update(Post $post, Request $request)
+    {
+        $post->update($request->all());
+
+        return redirect()->route('admin.posts.index');
     }
 }
