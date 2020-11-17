@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class AdminPostsController extends Controller
 {
@@ -23,7 +23,7 @@ class AdminPostsController extends Controller
         return view('admin.posts.create');
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         Post::create($request->all());
 
@@ -39,7 +39,7 @@ class AdminPostsController extends Controller
         return view('admin.posts.edit', $data);
     }
 
-    public function update(Post $post, Request $request)
+    public function update(Post $post, PostRequest $request)
     {
         $post->update($request->all());
 
