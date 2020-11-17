@@ -22,7 +22,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->sentence,
+            'content' => $this->faker->paragraph(),
+            'is_feature' => (bool) rand(0, 1),
         ];
     }
 }
